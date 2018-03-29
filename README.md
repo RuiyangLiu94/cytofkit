@@ -1,5 +1,22 @@
+### The kit is forked from http://jinmiaochenlab.github.io/cytofkit/
+
+To install this development version, use:
+
+``` r
+if(!require(devtools)){
+  install.packages("devtools") # If not already installed
+}
+devtools::install_github("RuiyangLiu94/cytofkit2")
+```
+After installation, to load the package, use:
+``` r
+library("cytofkit")
+cytofkit_GUI()
+```
+
+
+# original version
 cytofkit: an integrated mass cytometry data analysis pipeline
-============
 
 **NOTE**: <u>This is the development version of cytofkit package</u>
 
