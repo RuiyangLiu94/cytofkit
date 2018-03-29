@@ -71,6 +71,7 @@ cytof_dimReduction <- function(data,
            tsne={
                max_iter=1000
                perplexity=30
+               theta=0.5
                print("User-defined tsne parameter?Y/N")
                response=readline()
 
@@ -80,10 +81,12 @@ cytof_dimReduction <- function(data,
                }
 
                if (response %in% c("Y","Yes","yes")){
+                  cat(" enter user-defined parameters(iteration=1000;perplexity=30;theta=0.5 by default):")
                   max_iter=readline("iteration:")
                   perplexity=readline("perplexity:")
                   max_iter=as.integer(max_iter)
                   perplexity=as.integer(perplexity)
+                  theta=readline("theta:")
                   }
                else{
                   message("default parameters has been chosen: iteration=1000, perplexity=30")
@@ -96,7 +99,7 @@ cytof_dimReduction <- function(data,
                                  dims = 2, 
                                  check_duplicates = FALSE, 
                                  pca = TRUE, 
-                                 max_iter=max_iter,perplexity=perplexity...)
+                                 max_iter=max_iter,perplexity=perplexity,theta=theta...)
                mapped <- tsne_out$Y
            },
            pca={
