@@ -69,13 +69,34 @@ cytof_dimReduction <- function(data,
     
     switch(method,
            tsne={
+               max_iter=1000
+               perplexity=30
+               print("User-defined tsne parameter?Y/N")
+               response=readline()
+
+               while (!(response %in% c("Y","Yes","yes","N","No","no"))){
+                  print("please enter again: Y/N")
+                  response=readline()
+               }
+
+               if (response %in% c("Y","Yes","yes")){
+                  max_iter=readline("iteration:")
+                  perplexity=readline("perplexity:")
+                  max_iter=as.integer(max_iter)
+                  perplexity=as.integer(perplexity)
+                  }
+               else{
+                  message("default parameters has been chosen: iteration=1000, perplexity=30")
+                  }
+             
                cat("  Running t-SNE...with seed", tsneSeed)
                if(is.numeric(tsneSeed))
                    set.seed(tsneSeed) # Set a seed if you want reproducible results
                tsne_out <- Rtsne(marker_filtered_data, initial_dims = ncol(marker_filtered_data), 
                                  dims = 2, 
                                  check_duplicates = FALSE, 
-                                 pca = TRUE, ...)
+                                 pca = TRUE, 
+                                 max_iter=max_iter,perplexity=perplexity...)
                mapped <- tsne_out$Y
            },
            pca={
