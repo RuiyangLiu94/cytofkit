@@ -87,6 +87,7 @@ cytof_dimReduction <- function(data,
                   max_iter=as.integer(max_iter)
                   perplexity=as.integer(perplexity)
                   theta=readline("theta:")
+                  theta=as.numeric(theta)
                   }
                else{
                   message("default parameters has been chosen: iteration=1000, perplexity=30")
@@ -99,7 +100,7 @@ cytof_dimReduction <- function(data,
                                  dims = 2, 
                                  check_duplicates = FALSE, 
                                  pca = TRUE, 
-                                 max_iter=max_iter,perplexity=perplexity,theta=theta...)
+                                 max_iter=max_iter,perplexity=perplexity,theta=theta,...)
                mapped <- tsne_out$Y
            },
            pca={
